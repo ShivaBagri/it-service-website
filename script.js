@@ -7,17 +7,31 @@ function sendMessage(event) {
     alert("Message sent successfully!");
 }
 
-/* Scroll Animation for Cards */
-const cards = document.querySelectorAll(".card");
+/* SECTION ANIMATION ON CLICK */
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
 
-window.addEventListener("scroll", () => {
-    const triggerBottom = window.innerHeight * 0.85;
+navLinks.forEach(link => {
+    link.addEventListener("click", function () {
+        // Remove active from all
+        navLinks.forEach(l => l.classList.remove("active"));
+        sections.forEach(sec => sec.classList.remove("active"));
 
-    cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
+        // Add active to clicked link
+        this.classList.add("active");
 
-        if (cardTop < triggerBottom) {
-            card.classList.add("show");
-        }
+        // Get target section
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        // Animate section
+        setTimeout(() => {
+            targetSection.classList.add("active");
+        }, 200);
     });
+});
+
+/* SHOW FIRST SECTION ON LOAD */
+window.addEventListener("load", () => {
+    document.querySelector("#home").classList.add("active");
 });
