@@ -1,6 +1,10 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+}
+
+/* SMOOTH SCROLL */
+html {
     scroll-behavior: smooth;
 }
 
@@ -13,6 +17,7 @@ header {
     color: white;
     position: sticky;
     top: 0;
+    z-index: 1000;
 }
 
 nav a {
@@ -26,24 +31,19 @@ nav a:hover {
     color: yellow;
 }
 
+nav a.active {
+    border-bottom: 2px solid yellow;
+}
+
 /* HERO */
 .hero {
     text-align: center;
     padding: 120px 20px;
     background: linear-gradient(to right, #0d6efd, #00c6ff);
     color: white;
-    animation: fadeIn 2s ease-in-out;
 }
 
-.hero h2 {
-    font-size: 40px;
-    animation: slideDown 1s ease;
-}
-
-.hero p {
-    animation: fadeIn 2s ease;
-}
-
+/* BUTTON */
 .hero button {
     padding: 12px 25px;
     background: white;
@@ -59,12 +59,26 @@ nav a:hover {
     background: yellow;
 }
 
-/* SERVICES */
+/* SECTIONS */
+section {
+    padding: 60px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+    scroll-margin-top: 80px;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CARDS */
 .cards {
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding: 40px;
     flex-wrap: wrap;
 }
 
@@ -73,15 +87,7 @@ nav a:hover {
     padding: 20px;
     border-radius: 10px;
     width: 220px;
-    text-align: center;
     transition: 0.3s;
-    opacity: 0;
-    transform: translateY(50px);
-}
-
-.card.show {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .card:hover {
@@ -90,19 +96,11 @@ nav a:hover {
     color: white;
 }
 
-/* SECTIONS */
-section {
-    padding: 60px;
-    text-align: center;
-}
-
 /* FORM */
 form input, form textarea {
     width: 80%;
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
 }
 
 form button {
@@ -111,11 +109,6 @@ form button {
     color: white;
     border: none;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-form button:hover {
-    background: darkgreen;
 }
 
 /* FOOTER */
@@ -124,38 +117,4 @@ footer {
     color: white;
     text-align: center;
     padding: 15px;
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* SECTION ANIMATION */
-section {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.6s ease;
-}
-
-section.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* NAV ACTIVE LINK */
-nav a.active {
-    border-bottom: 2px solid yellow;
 }
