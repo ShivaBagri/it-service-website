@@ -1,37 +1,21 @@
 /* =========================
-   GLOBAL NEON THEME
+   BASE THEME
 ========================= */
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #0b0f1a;
-    color: #7dd3ff;
+
+    /* Warm soft background */
+    background: linear-gradient(to bottom, #fff4e6, #ffe9d6);
+
+    /* Light blue text */
+    color: #4aa3df;
 }
 
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
-}
-
-/* =========================
-   GLOBAL TEXT GLOW
-========================= */
-
-h1, h2, h3, h4, h5, h6 {
-    color: #7dd3ff;
-    text-shadow:
-        0 0 5px #7dd3ff,
-        0 0 10px #7dd3ff,
-        0 0 20px #3bbcff,
-        0 0 40px #1aa3ff;
-}
-
-p, a, li {
-    color: #7dd3ff;
-    text-shadow:
-        0 0 3px #7dd3ff,
-        0 0 8px #3bbcff;
 }
 
 /* =========================
@@ -42,39 +26,40 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 15px 50px;
-    background: #05070f;
+
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #1aa3ff;
+
+    border-bottom: 1px solid #d9e6f2;
 }
 
 nav a {
     margin: 0 10px;
-    color: #7dd3ff;
     text-decoration: none;
+    color: #4aa3df;
     transition: 0.3s;
-    text-shadow: 0 0 5px #1aa3ff;
 }
 
 nav a:hover {
-    color: #ffffff;
-    text-shadow: 0 0 15px #3bbcff;
+    color: #1f78c1;
 }
 
 nav a.active {
-    border-bottom: 2px solid #7dd3ff;
+    border-bottom: 2px solid #4aa3df;
 }
 
 /* =========================
-   HERO SECTION
+   HERO
 ========================= */
 
 .hero {
     text-align: center;
     padding: 120px 20px;
-    background: linear-gradient(to right, #0b0f1a, #0d1b2a);
-    color: #7dd3ff;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /* =========================
@@ -83,22 +68,22 @@ nav a.active {
 
 button {
     padding: 12px 25px;
-    background: #7dd3ff;
-    color: #0b0f1a;
+    background: #4aa3df;
+    color: white;
     border: none;
     cursor: pointer;
     margin-top: 20px;
+    border-radius: 5px;
     transition: 0.3s;
-    box-shadow: 0 0 10px #3bbcff;
 }
 
 button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px #7dd3ff;
+    background: #1f78c1;
+    transform: scale(1.05);
 }
 
 /* =========================
-   SECTIONS ANIMATION
+   SECTIONS
 ========================= */
 
 section {
@@ -106,7 +91,7 @@ section {
     text-align: center;
 
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
     transition: all 0.6s ease;
 
     scroll-margin-top: 80px;
@@ -129,18 +114,18 @@ section.show {
 }
 
 .card {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
     width: 220px;
+
+    border: 1px solid #d9e6f2;
     transition: 0.3s;
-    border: 1px solid #1aa3ff;
-    box-shadow: 0 0 10px #1aa3ff;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 0 20px #3bbcff;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 /* =========================
@@ -151,10 +136,10 @@ form input, form textarea {
     width: 80%;
     margin: 10px;
     padding: 10px;
-    background: transparent;
-    border: 1px solid #7dd3ff;
-    color: #7dd3ff;
-    box-shadow: 0 0 5px #1aa3ff;
+
+    border: 1px solid #cfe3f5;
+    border-radius: 5px;
+    outline: none;
 }
 
 /* =========================
@@ -162,9 +147,10 @@ form input, form textarea {
 ========================= */
 
 footer {
-    background: #05070f;
-    color: #7dd3ff;
+    background: rgba(255, 255, 255, 0.8);
     text-align: center;
     padding: 15px;
-    border-top: 1px solid #1aa3ff;
+
+    border-top: 1px solid #d9e6f2;
+    color: #4aa3df;
 }
