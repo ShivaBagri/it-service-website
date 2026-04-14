@@ -142,3 +142,20 @@ footer {
         opacity: 1;
     }
 }
+
+/* SECTION ANIMATION */
+section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* NAV ACTIVE LINK */
+nav a.active {
+    border-bottom: 2px solid yellow;
+}
