@@ -1,50 +1,43 @@
-function scrollToContact() {
-    document.querySelector("#contact").scrollIntoView({
-        behavior: "smooth"
-    });
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-function sendMessage(event) {
-    event.preventDefault();
-    alert("Message sent successfully!");
-}
+    const navLinks = document.querySelectorAll("nav a");
+    const sections = document.querySelectorAll("section");
 
-/* NAV CLICK SMOOTH + ACTIVE */
-const navLinks = document.querySelectorAll("nav a");
+    /* SMOOTH NAVIGATION CLICK */
+    navLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
 
-navLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetSection = document.querySelector(targetId);
 
-        const targetId = this.getAttribute("href");
-        const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
 
-        targetSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+            // ACTIVE LINK
+            navLinks.forEach(l => l.classList.remove("active"));
+            this.classList.add("active");
         });
-
-        navLinks.forEach(l => l.classList.remove("active"));
-        this.classList.add("active");
     });
-});
 
-/* SCROLL ANIMATION */
-const sections = document.querySelectorAll("section");
+    /* SCROLL ANIMATION */
+    function revealSections() {
+        const trigger = window.innerHeight * 0.85;
 
-window.addEventListener("scroll", () => {
-    const trigger = window.innerHeight * 0.85;
+        sections.forEach(section => {
+            const top = section.getBoundingClientRect().top;
 
-    sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
+            if (top < trigger) {
+                section.classList.add("show");
+            }
+        });
+    }
 
-        if (top < trigger) {
-            section.classList.add("show");
-        }
-    });
-});
+    window.addEventListener("scroll", revealSections);
+    revealSections(); // run on load
 
-/* SHOW HOME FIRST */
-window.addEventListener("load", () => {
-    document.querySelector("#home").classList.add("show");
 });
