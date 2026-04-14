@@ -1,5 +1,7 @@
 function scrollToContact() {
-    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    document.querySelector("#contact").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
 function sendMessage(event) {
@@ -7,31 +9,42 @@ function sendMessage(event) {
     alert("Message sent successfully!");
 }
 
-/* SECTION ANIMATION ON CLICK */
-const sections = document.querySelectorAll("section");
+/* NAV CLICK SMOOTH + ACTIVE */
 const navLinks = document.querySelectorAll("nav a");
 
 navLinks.forEach(link => {
-    link.addEventListener("click", function () {
-        // Remove active from all
+    link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute("href");
+        const targetSection = document.querySelector(targetId);
+
+        targetSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
         navLinks.forEach(l => l.classList.remove("active"));
-        sections.forEach(sec => sec.classList.remove("active"));
-
-        // Add active to clicked link
         this.classList.add("active");
-
-        // Get target section
-        const targetId = this.getAttribute("href").substring(1);
-        const targetSection = document.getElementById(targetId);
-
-        // Animate section
-        setTimeout(() => {
-            targetSection.classList.add("active");
-        }, 200);
     });
 });
 
-/* SHOW FIRST SECTION ON LOAD */
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    const trigger = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+
+        if (top < trigger) {
+            section.classList.add("show");
+        }
+    });
+});
+
+/* SHOW HOME FIRST */
 window.addEventListener("load", () => {
-    document.querySelector("#home").classList.add("active");
+    document.querySelector("#home").classList.add("show");
 });
